@@ -4,6 +4,9 @@ from django.shortcuts import render
 def home(response):
     return render(response, 'base.html')
 
-# todo: setup views for other pages
+# todo: set up views for other pages
+# Will be multiple pages each for a particular view of data (Min of 3)
 
-# todo: layout content for dashboard
+# todo: create history.html
+def history(response):
+    return render(response, 'history.html')

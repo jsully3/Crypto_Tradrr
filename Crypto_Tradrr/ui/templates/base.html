@@ -1,3 +1,13 @@
+<!--todo: layout content for dashboard-->
+
+<!--
+    1. Navbar
+    2. Dashboard of running bot's numbers
+       a. Total net profit ($)
+       b. Net profit over the past hour
+       c. Trends detected today
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +15,34 @@
     <title>Crypto Tradrr</title>
 </head>
 <body>
-    <p>Cryptoooo</p>
+    <navbar>
 
+    </navbar>
+    <h1>Cryptoooo</h1>
+    <!-- If bot is not running, the following div shows-->
+    <div id="startTradingForm">
+        <!-- Form to create bot instance -->
+        {% block startTradingForm %}
+        {% endblock %}
+    </div>
+
+    <!-- If the bot is running, the following div shows-->
+    <div id="dashboardMain">
+        <div id="totalProfit">
+            <p>Total Profit</p>
+            {% block totalProfit %}
+            {% endblock %}
+        </div>
+        <div id="pastHourProfit">
+            <p>Profit from Past Hour</p>
+            {% block pastHourProfit %}
+            {% endblock %}
+        </div>
+        <div id="trendsDetected">
+            <p>Trend</p>
+            {% block trendsDetected %}
+            {% endblock %}
+        </div>
+    </div>
 </body>
 </html>
