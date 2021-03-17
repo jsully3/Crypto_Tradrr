@@ -1,24 +1,36 @@
-# todo: come up with trading algo
-
+import time
 from datetime import datetime
+from kucoin.client import Client
+# local file with api info
+from local_const import *
+
+client = Client(api_key, api_secret, api_passphrase)
+
+user_symbol = input("Enter the Cryptocurrency that you would like to trade: ")
 
 
 def current_time():
     # datetime object containing current date and time
-    now = datetime.now().strftime('%m-%d-%Y %H:%M:%S')
-    return str(now)
+    now = datetime.now()
+    return now
 
 
-print("Enter the Currency rate: ")
-currency = float(input())
+def trade(symbol):
+    last_price = client.get_ticker(symbol + "-USDT")["price"]
+    end_time = current_time() + 4
+    now_time = current_time()
+    trend_count = 0
+    profit = 0.0
+    while end_time > now_time:
+        now_time = current_time()
+        time.sleep(0.5)
+        # getting the most recent price
+        current_price = client.get_ticker(symbol + "-USDT")["price"]
+        # comparing current and last price
+
+        # deciding whether to buy, sell, or hold
 
 
-def trade_algo():
-    if currency > 5:
-        return print("Sell Sell Sell")
-    if currency < 1:
-        return print("Buy Buy Buy")
-    else:
-        return print("Stay In")
+# todo: come up with trading algo
 
-trade_algo()
+trade(user_symbol)
